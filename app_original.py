@@ -13,9 +13,7 @@ import hashlib
 import uuid
 
 # RAG Imports
-import faiss
-import pickle
-import os
+import chromadb
 from sentence_transformers import SentenceTransformer
 
 # Multimodal Imports  
@@ -106,12 +104,15 @@ class CompleteSingaporeAI:
     def initialize_rag(self):
         try:
             self.embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-            self.faiss_index = None
-	 	self.documents = []
-		self.metadata = []
+            self.chroma_client = chromadb.Client()
             
-           self.populate_singapore_medical_kb()
-		self.rag_initialized = True
+            try:
+                self.medical_collection = self.chroma_client.get_collection("singapore_medical_kb")
+                self.rag_initialized = True
+            except Exception:
+                self.medical_collection = self.chroma_client.create_collection("singapore_medical_kb")
+                self.populate_singapore_medical_kb()
+                self.rag_initialized = True
                 
         except Exception as e:
             st.error(f"RAG Initialization Error: {str(e)}")
@@ -282,21 +283,22 @@ class CompleteSingaporeAI:
         # Add all 10 documents to ChromaDB
         total_docs_added = 0
         for doc in singapore_medical_docs:
-    try:
-        embedding = self.embedding_model.encode(doc["content"])
-        self.documents.append(doc["content"])
-        self.metadata.append({
-            "title": doc["title"],
-            "category": doc["category"],
-            "hospital": doc["hospital"],
-            "last_updated": doc["last_updated"]
-        })
-        if self.faiss_index is None:
-            self.faiss_index = faiss.IndexFlatIP(embedding.shape[0])
-        self.faiss_index.add(embedding.reshape(1, -1))
-        total_docs_added += 1
-        print(f"✅ Added: {doc['title']}")
-    except Exception as e:
+            try:
+                embedding = self.embedding_model.encode(doc["content"]).tolist()
+                self.medical_collection.add(
+                    embeddings=[embedding],
+                    documents=[doc["content"]],
+                    metadatas=[{
+                        "title": doc["title"],
+                        "category": doc["category"],
+                        "hospital": doc["hospital"],
+                        "last_updated": doc["last_updated"]
+                    }],
+                    ids=[doc["id"]]
+                )
+                total_docs_added += 1
+                print(f"✅ Added: {doc['title']}")
+            except Exception as e:
                 st.error(f"Error adding document {doc['id']}: {str(e)}")
         
         print(f"🎯 Total Singapore medical documents loaded: {total_docs_added}/10")
@@ -311,34 +313,36 @@ class CompleteSingaporeAI:
             st.error(f"Multimodal Initialization Error: {str(e)}")
             self.multimodal_initialized = False
 
-  def rag_retrieve_guidelines(self, query: str, n_results: int = 3) -> List[Dict]:
-    if not self.rag_initialized:
-        return []
-    
-    cache_key = self.generate_cache_key(query, n_results, 'rag')
-    cached_result = self.cache_get(cache_key)
-    if cached_result:
-        return cached_result
+    def rag_retrieve_guidelines(self, query: str, n_results: int = 3) -> List[Dict]:
+        if not self.rag_initialized:
+            return []
         
-    try:
-        query_embedding = self.embedding_model.encode(query)
-        scores, indices = self.faiss_index.search(query_embedding.reshape(1, -1), n_results)
-        
-        retrieved_docs = []
-        for i, idx in enumerate(indices[0]):
-            if idx < len(self.documents):
+        cache_key = self.generate_cache_key(query, n_results, 'rag')
+        cached_result = self.cache_get(cache_key)
+        if cached_result:
+            return cached_result
+            
+        try:
+            query_embedding = self.embedding_model.encode(query).tolist()
+            results = self.medical_collection.query(
+                query_embeddings=[query_embedding],
+                n_results=n_results
+            )
+            
+            retrieved_docs = []
+            for i in range(len(results['documents'][0])):
                 retrieved_docs.append({
-                    'content': self.documents[idx],
-                    'metadata': self.metadata[idx],
-                    'distance': 1 - scores[0][i]
+                    'content': results['documents'][0][i],
+                    'metadata': results['metadatas'][0][i],
+                    'distance': results['distances'][0][i] if 'distances' in results else 0
                 })
-        
-        self.cache_set(cache_key, retrieved_docs)
-        return retrieved_docs
-        
-    except Exception as e:
-        st.error(f"RAG Retrieval Error: {str(e)}")
-        return []
+            
+            self.cache_set(cache_key, retrieved_docs)
+            return retrieved_docs
+            
+        except Exception as e:
+            st.error(f"RAG Retrieval Error: {str(e)}")
+            return []
 
     def analyze_medical_image(self, image: Image.Image, image_name: str) -> Dict:
         if not self.multimodal_initialized:

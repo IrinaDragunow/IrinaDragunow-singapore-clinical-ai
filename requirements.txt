@@ -1,12 +1,28 @@
+# Singapore Clinical AI - Production Requirements
+# Developed by: Irina Dragunow
+# Purpose: Advanced Healthcare AI Simulation System
+
+# Core Web Framework
 streamlit>=1.28.0
-plotly>=5.17.0
-numpy>=1.24.0
+
+# Data Processing & Analytics
 pandas>=2.0.0
-chromadb>=0.4.0
+numpy>=1.24.0
+plotly>=5.17.0
+scikit-learn>=1.3.0
+
+# AI/ML Models & Vector Search
 sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+
+# Image Processing
 pillow>=10.0.0
 opencv-python>=4.8.0
 pytesseract>=0.3.10
-scikit-learn>=1.3.0
+
+# Utilities
 requests>=2.31.0
 python-dateutil>=2.8.2
+
+# Note: chromadb removed as we use FAISS for vector search
+# Note: faiss-cpu duplicate removed

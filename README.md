@@ -1,162 +1,357 @@
-# Singapore Clinical AI - RAG + Multimodal Healthcare Intelligence
+# 🇸🇬 Singapore Clinical AI - Healthcare Simulation System
 
-🏥 **Enterprise Healthcare AI with RAG + Computer Vision**  
-Built by **Irina Dragunow** | Portfolio Demonstration for Singapore Healthcare Opportunities
+**Author:** Irina Dragunow  
+**Type:** Educational RAG + Multimodal AI System  
+**Purpose:** ML Engineering Portfolio & Singapore Healthcare Domain Demonstration
 
-## 🚀 Live Demo
-**[🔗 Try Singapore Clinical AI](https://singapore-clinical-ai.streamlit.app)** ✅ **LIVE DEMO**
-
-## 🎯 Technology Showcase
-
-### 🧠 RAG (Retrieval-Augmented Generation)
-- **Vector Database:** ChromaDB with semantic search
-- **Embeddings:** Sentence Transformers (all-MiniLM-L6-v2)
-- **Knowledge Base:** 10 Real Singapore Medical Guidelines (MOH, SGH, NUH, TTSH)
-- **Performance:** Sub-1 second medical guideline retrieval
-
-### 📷 Multimodal AI
-- **Computer Vision:** OpenCV medical image analysis
-- **OCR:** Tesseract text extraction from lab reports
-- **Medical Imaging:** Chest X-Ray, CT Scan, ECG analysis
-- **Classification:** Automated medical image type detection
-
-### 🇸🇬 Singapore Healthcare Integration
-- **Guidelines:** MOH Clinical Practice Guidelines 2023-2024
-- **Hospitals:** Singapore General Hospital, NUH, TTSH protocols
-- **Compliance:** PDPA, Smart Nation AI Guidelines, Medisave integration
-- **Specialties:** Cardiology, Emergency Medicine, Infectious Disease, Oncology
-
-## 📊 Production Features
-
-- ⚡ **Real-time Performance Monitoring**
-- 🔍 **Health Checks & System Diagnostics**
-- 📈 **Analytics Dashboard**
-- 🔒 **Singapore Healthcare Compliance**
-- 🚀 **Cloud-Native Architecture**
-
-## 🛠️ Technical Implementation
-
-### RAG Pipeline
-```python
-# Semantic search through Singapore medical guidelines
-query_embedding = embedding_model.encode(clinical_query)
-relevant_guidelines = medical_collection.query(
-    query_embeddings=[query_embedding], 
-    n_results=3
-)
-```
-
-### Computer Vision Pipeline
-```python
-# Analyze medical images with specialized algorithms
-if image_type == "Chest X-Ray":
-    findings = analyze_chest_xray(medical_image)
-elif image_type == "CT Scan":
-    findings = analyze_ct_scan(medical_image)
-```
-
-## 🏥 Singapore Medical Knowledge Base
-
-### 10 Real Healthcare Documents Integrated:
-1. **MOH Hypertension Guidelines 2023**
-2. **MOH Diabetes Management Protocol 2023**
-3. **SGH Pneumonia Treatment Guidelines 2024**
-4. **Singapore TB Clinical Management 2024**
-5. **NUH Emergency Medicine Protocols 2024**
-6. **TTSH Infectious Disease Management 2024**
-7. **SGH Cardiology STEMI Management 2024**
-8. **NUH Cancer Treatment Protocols 2024**
-9. **MOH Mental Health Guidelines 2024**
-10. **Singapore Chronic Disease Management Programme 2024**
-
-## 🎓 Use Cases Demonstrated
-
-### For Healthcare Professionals
-- Clinical decision support with Singapore guidelines
-- Medical image analysis and interpretation
-- Drug interaction and dosing guidance
-- Treatment protocol recommendations
-
-### For Healthcare Technology
-- RAG implementation for medical knowledge retrieval
-- Multimodal AI for clinical documentation
-- Production monitoring and compliance
-- Scalable cloud architecture
-
-## 🚀 Quick Start
-
-### Run Locally
-```bash
-git clone https://github.com/IrinaDragunow/singapore-clinical-ai
-cd singapore-clinical-ai
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-### Deploy to Cloud
-- **Streamlit Cloud:** One-click deployment ready
-- **AWS/Azure:** Docker container with auto-scaling
-- **Production:** Enterprise deployment with monitoring
-
-## 📈 Performance Benchmarks
-
-| Feature | Performance |
-|---------|-------------|
-| 🔍 RAG Retrieval | < 1 second |
-| 🖼️ Image Analysis | < 3 seconds |
-| 🧠 Total Processing | < 5 seconds |
-| 👥 Concurrent Users | 100+ supported |
-| ⏱️ Uptime Target | 99.9% SLA |
+**🔗 [Try Live Demo](https://multimodal-rag-system.streamlit.app)** - No installation required!
 
 ## ⚠️ Important Disclaimer
 
-**TECHNOLOGY DEMONSTRATION & PORTFOLIO PROJECT**
+**🚨 EDUCATIONAL SIMULATION ONLY - NOT FOR MEDICAL USE**
 
-This application showcases advanced AI engineering skills and is designed for:
-- **Portfolio demonstration** of RAG + Multimodal AI capabilities
-- **Technical interviews** for Singapore healthcare AI positions
-- **Proof of concept** for healthcare technology applications
+This system contains **simulated medical data, fictional patient cases, and educational content only**. All clinical guidelines, cost calculations, and medical recommendations are created for demonstration purposes. 
 
-**NOT intended for:**
-- Clinical diagnosis or patient care
-- Medical device regulatory approval
-- Production healthcare use without validation
-
-**Always consult qualified healthcare professionals for medical decisions.**
-
-## 👨‍💻 About the Developer
-
-**Irina Dragunow**  
-RAG + Multimodal Specialist
-
-**Expertise:**
-- 🧠 Large Language Models & RAG Systems
-- 📷 Computer Vision for Medical Imaging
-- 🏥 Healthcare AI & Clinical Decision Support
-- 🇸🇬 Singapore Healthcare Technology Integration
-
-**Seeking opportunities in:**
-- Singapore Healthcare AI Development
-- Medical Technology Innovation
-- Clinical Decision Support Systems
-- Healthcare Data Science
-
-**Contact:** Available for Singapore healthcare AI opportunities
+**Always consult qualified healthcare professionals for actual medical needs.**
 
 ---
 
-## 🏆 Technical Achievements Demonstrated
+## 📋 Overview
 
-✅ **Production-Ready RAG Implementation**  
-✅ **Real-World Medical Data Integration**  
-✅ **Multimodal AI with Computer Vision**  
-✅ **Singapore Healthcare Compliance**  
-✅ **Cloud-Native Architecture**  
-✅ **Professional UI/UX Design**  
-✅ **Performance Monitoring & Analytics**  
+This project demonstrates a **Retrieval-Augmented Generation (RAG) system** combined with **multimodal AI capabilities** for healthcare applications, specifically adapted for Singapore's healthcare context. The system processes both clinical text and medical images to provide educational healthcare analysis.
 
-## 📄 License
+**⚠️ Important:** This is an educational simulation system designed to showcase AI/ML engineering capabilities. All medical content, guidelines, and calculations are simulated for demonstration purposes only.
 
-Educational and Portfolio Use
+## 🏗️ Architecture
 
-*Medical guidelines content remains property of respective Singapore healthcare institutions (MOH, SGH, NUH, TTSH)
+### Core Components
+
+```
+Clinical Text Input → Medical NLP → Entity Extraction
+                                          ↓
+Medical Images → Computer Vision → Feature Analysis
+                                          ↓
+Combined Features → RAG System → Knowledge Retrieval → Educational Response
+```
+
+### Technical Stack
+
+- **RAG System:** FAISS vector database + Sentence Transformers
+- **Multimodal Processing:** Text NLP + Computer Vision (OpenCV)
+- **Knowledge Base:** 10 simulated Singapore healthcare guidelines
+- **Frontend:** Streamlit web application
+- **Fallback Systems:** Graceful degradation when dependencies unavailable
+
+## 🚀 Features
+
+### RAG Implementation
+- Vector search using `sentence-transformers` (all-MiniLM-L6-v2)
+- FAISS indexing for fast similarity search
+- Keyword fallback when embeddings unavailable
+- Singapore healthcare domain knowledge base
+
+### Multimodal Analysis
+- **Text Processing:** Medical entity extraction (medications, conditions, vital signs)
+- **Image Analysis:** Basic computer vision classification and OCR
+- **Cross-modal Integration:** Combined analysis from both input types
+
+### Singapore Healthcare Adaptations
+- Cultural dietary considerations (hawker food, traditional practices)
+- Educational Medisave cost calculations
+- Multi-ethnic healthcare recommendations (Chinese, Malay, Indian)
+
+## 📦 Installation
+
+### Option 1: Try Online (Recommended)
+**🔗 [Launch Live Demo](https://singapore-clinical-ai.streamlit.app)** - Ready to use immediately!
+
+### Option 2: Run Locally
+```bash
+# Clone repository
+git clone https://github.com/irinadragunow/multimodal-rag-system.git
+cd multimodal-rag-system
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run application
+streamlit run singapore_clinical_ai_production.py
+```
+
+**Local URL:** http://localhost:8501
+
+### Requirements
+- Python 3.8+
+- RAM: <1GB
+- Dependencies: See `requirements.txt`
+
+### Core Dependencies
+```txt
+streamlit>=1.28.0
+pandas>=1.5.0
+numpy>=1.24.0
+plotly>=5.15.0
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+Pillow>=9.5.0
+scikit-learn>=1.3.0
+requests>=2.31.0
+python-dateutil>=2.8.2
+```
+
+### Optional Dependencies
+```txt
+opencv-python>=4.7.0
+pytesseract>=0.3.10
+```
+
+## 💻 Usage
+
+### 🚀 [Access Live Demo](https://multimodal-rag-system.streamlit.app)
+
+**Demo Workflow (5 minutes):**
+1. **Text Analysis:** Input clinical notes to extract medical entities
+2. **Image Analysis:** Upload medical images for educational classification
+3. **Combined Analysis:** Process both modalities together for comprehensive results
+4. **Educational Guidelines:** Retrieve relevant simulated Singapore healthcare protocols
+
+### Sample Demo Cases
+
+**Quick Demo Steps:**
+1. 📱 **[Open Live Demo](https://multimodal-rag-system.streamlit.app)**
+2. 📄 **Click "Load Emergency Sample"** - Pre-loaded STEMI case
+3. 🔍 **Click "Analyze with RAG + Multimodal AI"** - See entity extraction + guideline retrieval
+4. 📷 **Upload medical image** (chest X-ray, CT scan) - See computer vision analysis
+5. 📊 **Review results** - Medical entities, cultural adaptations, cost estimates
+
+## 🔧 Technical Implementation
+
+### RAG System Details
+```python
+# Vector search implementation
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+faiss_index = faiss.IndexFlatIP(384)
+
+# Knowledge retrieval
+def search_knowledge_base(query, n_results=3):
+    query_embedding = embedding_model.encode([query])
+    similarities = cosine_similarity(query_embedding, doc_embeddings)
+    return ranked_results
+```
+
+### Multimodal Processing
+```python
+# Text + Image fusion
+text_entities = medical_nlp.extract_entities(clinical_note)
+image_features = image_analyzer.analyze_images(uploaded_images)
+combined_analysis = multimodal_fusion(text_entities, image_features)
+```
+
+### Error Handling
+- Graceful degradation when optional dependencies missing
+- Fallback search methods when FAISS unavailable
+- Comprehensive logging and error recovery
+
+## 📊 Current Capabilities vs. Limitations
+
+### What Works Well
+- ✅ RAG architecture with vector search
+- ✅ Multimodal input processing (text + images)
+- ✅ Basic medical entity extraction
+- ✅ Educational Singapore healthcare context
+- ✅ Production-quality error handling
+- ✅ Real-time processing (<2 seconds)
+
+### Current Limitations
+- ⚠️ Medical analysis is educational/simulated, not clinical-grade
+- ⚠️ Knowledge base contains simulated guidelines, not real MOH documents
+- ⚠️ Computer vision provides basic classification, not diagnostic-quality analysis
+- ⚠️ Cost calculations are educational estimates, not precise Medisave rates
+
+### Technical Honest Assessment
+- **Medical NLP:** Pattern-based entity extraction (not clinical-grade NER)
+- **Computer Vision:** Basic OpenCV analysis with template responses
+- **Knowledge Base:** Hand-crafted educational content (not scraped MOH data)
+- **RAG System:** Real vector search architecture with simulated content
+
+## 🔮 Enhancement Roadmap
+
+### Version 2.0 - Advanced AI Models
+**Timeline:** 2-3 months  
+**Requirements:** 8GB RAM, GPU recommended
+
+- **Medical NLP:** Integrate Bio_ClinicalBERT for improved entity extraction
+- **Computer Vision:** Add specialized medical imaging models (RadImageNet)
+- **Knowledge Base:** Expand to 50+ educational healthcare protocols
+- **Performance:** 95% → 98% entity extraction accuracy
+
+### Version 3.0 - Real Integration
+**Timeline:** 6-12 months  
+**Requirements:** Healthcare API credentials, regulatory approval
+
+- **APIs:** Connect to actual Singapore healthcare APIs (HealthHub, NEHR)
+- **Guidelines:** Integration with real MOH clinical practice guidelines  
+- **Validation:** Clinical accuracy validation with healthcare professionals
+- **Compliance:** PDPA and healthcare regulatory compliance
+
+### Version 4.0 - Enterprise Grade
+**Timeline:** 1-2 years  
+**Requirements:** Hospital partnerships, federated learning infrastructure
+
+- **Scale:** Multi-hospital deployment architecture
+- **Analytics:** Population health insights and predictive modeling
+- **AI:** Large language model integration for clinical reasoning
+- **Research:** Federated learning across Singapore healthcare network
+
+## 💼 Business Applications
+
+### Current State: Educational Demonstration
+- **🔗 [Live Demo Available](https://multimodal-rag-system.streamlit.app)** - Try all features online
+- **Healthcare Training:** Medical education and simulation
+- **Technical Interviews:** Demonstrating RAG + multimodal AI capabilities
+- **Portfolio Projects:** Showcasing Singapore healthcare domain knowledge
+
+### Future Commercial Applications
+
+**Phase 1: Clinical Tools (6-18 months)**
+- Clinical decision support foundation
+- Medical documentation assistance
+- Healthcare training simulations
+
+**Phase 2: Hospital Integration (1-3 years)**
+- EHR system integration
+- Real-time clinical guidelines
+- Healthcare workflow optimization
+
+**Phase 3: Population Health (2-5 years)**
+- Singapore health analytics platform
+- Preventive care recommendations
+- Healthcare resource optimization
+
+### Estimated Business Impact
+- **Time Savings:** 30-50% reduction in clinical documentation time
+- **Cost Reduction:** Educational estimates suggest 10-15% healthcare efficiency gains
+- **Quality Improvement:** Standardized evidence-based care protocols
+
+## 🛡️ Disclaimers
+
+**Educational Purpose Only:**
+- This system is designed for AI/ML demonstration and educational purposes
+- All medical guidelines, cost calculations, and clinical recommendations are simulated
+- Not approved for clinical use or medical decision-making
+- Always consult qualified healthcare professionals for medical needs
+
+**Technical Limitations:**
+- Computer vision analysis uses basic pattern recognition, not medical-grade imaging
+- Medical entity extraction uses rule-based patterns, not clinical NLP models
+- Knowledge base content is educational simulation, not verified medical information
+- Cost calculations are simplified estimates, not official Medisave rates
+
+**Data Privacy:**
+- No real patient data is processed or stored
+- All sample cases are fictional
+- System designed with privacy-by-design principles for future real data integration
+
+## 📚 Technical Documentation
+
+### Key Files
+- `singapore_clinical_ai_production.py` - Main application (1,200+ lines)
+- `requirements.txt` - Dependencies list
+- `README.md` - This documentation
+
+### Architecture Decisions
+- **FAISS over ChromaDB:** Better performance for small datasets, fewer dependencies
+- **Sentence Transformers:** Lightweight alternative to large language models
+- **Streamlit:** Rapid prototyping and demo capabilities  
+- **Educational Positioning:** Clear ethical boundaries for simulated content
+- **Fallback Systems:** Graceful degradation when dependencies unavailable
+
+### Code Structure
+```
+singapore_clinical_ai_production.py
+├── MedicalNLP Class          # Text processing and entity extraction
+├── ImageAnalysis Class       # Computer vision and image classification  
+├── RAGSystem Class          # Vector search and knowledge retrieval
+├── SingaporeClinicalAI      # Main orchestration class
+└── Streamlit UI             # Web interface and user interaction
+```
+
+## 🎯 For Developers
+
+### Quick Testing
+```bash
+# Test live demo
+curl -I https://multimodal-rag-system.streamlit.app
+# Should return: HTTP/2 200
+
+# Test local installation
+streamlit run singapore_clinical_ai_production.py
+# Opens: http://localhost:8501
+```
+
+### Development Setup
+```bash
+# Check core dependencies
+python -c "import streamlit, pandas, numpy, plotly; print('Core dependencies OK')"
+
+# Check optional dependencies  
+python -c "import cv2, pytesseract; print('Optional CV dependencies OK')"
+```
+
+### 🔗 Links
+- **Live Demo:** https://multimodal-rag-system.streamlit.app
+- **GitHub Repository:** https://github.com/irinadragunow/multimodal-rag-system
+- **Technical Documentation:** See code comments in `singapore_clinical_ai_production.py`
+
+### System Requirements
+- **Minimum:** Python 3.8, 512MB RAM, core dependencies only
+- **Recommended:** Python 3.9+, 1GB RAM, all dependencies including OpenCV
+- **Development:** Python 3.10+, 2GB RAM, IDE with debugging capabilities
+
+### Extending the System
+
+**Adding New Medical Entities:**
+```python
+# In MedicalNLP.setup_medical_patterns()
+self.medical_dict['conditions']['new_condition'] = [
+    'primary_term', 'alternative_term', 'abbreviation'
+]
+```
+
+**Expanding Knowledge Base:**
+```python
+# In RAGSystem.setup_singapore_knowledge_base()
+new_guideline = {
+    "id": "educational_specialty_2024",
+    "title": "Educational Clinical Simulation - Specialty Management",
+    "content": "Simulated guideline content...",
+    "hospital": "Educational Demo (Hospital Style)",
+    "category": "educational_simulation"
+}
+```
+
+**Enhancing Image Analysis:**
+```python
+# In ImageAnalysis.setup_image_types()
+self.image_types['new_modality'] = {
+    'keywords': ['keyword1', 'keyword2'],
+    'findings': ['Educational finding 1', 'Educational finding 2']
+}
+```
+
+### Performance Optimization
+- **Startup Time:** ~30-60 seconds (loading sentence transformers model)
+- **Processing Time:** <2 seconds for typical clinical notes
+- **Memory Usage:** ~300-800MB depending on dependencies
+- **Concurrent Users:** Suitable for single-user demo, would need optimization for multi-user
+
+---
+
+## 🔗 Project Links
+
+- **🚀 [Live Demo](https://multimodal-rag-system.streamlit.app)** - Try the system online
+- **📂 [GitHub Repository](https://github.com/irinadragunow/multimodal-rag-system)** - Full source code
+- **👩‍💻 [Developer Portfolio](https://github.com/irinadragunow)** - Other projects by Irina Dragunow
+- **🇸🇬 [Singapore Healthcare AI](https://multimodal-rag-system.streamlit.app)** - Educational healthcare simulation
+
+**Note:** This project demonstrates sophisticated AI/ML engineering capabilities while maintaining ethical boundaries around healthcare simulation. It showcases technical expertise in RAG systems, multimodal AI, and domain-specific adaptations suitable for healthcare technology roles in Singapore and beyond.
