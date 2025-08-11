@@ -4,7 +4,7 @@
 **Type:** Educational RAG + Multimodal AI System  
 **Purpose:** ML Engineering Portfolio & Singapore Healthcare Domain Demonstration
 
-**🔗 [Try Live Demo](https://multimodal-rag-system.streamlit.app)** - No installation required!
+**🔗 [Try Live Demo](https://singapore-clinical-ai.streamlit.app)** - No installation required!
 
 ## ⚠️ Important Disclaimer
 
@@ -68,8 +68,8 @@ Combined Features → RAG System → Knowledge Retrieval → Educational Respons
 ### Option 2: Run Locally
 ```bash
 # Clone repository
-git clone https://github.com/irinadragunow/multimodal-rag-system.git
-cd multimodal-rag-system
+git clone https://github.com/irinadragunow/singapore-clinical-ai.git
+cd singapore-clinical-ai
 
 # Install dependencies
 pip install -r requirements.txt
@@ -107,7 +107,7 @@ pytesseract>=0.3.10
 
 ## 💻 Usage
 
-### 🚀 [Access Live Demo](https://multimodal-rag-system.streamlit.app)
+### 🚀 [Access Live Demo](https://singapore-clinical-ai.streamlit.app)
 
 **Demo Workflow (5 minutes):**
 1. **Text Analysis:** Input clinical notes to extract medical entities
@@ -118,7 +118,7 @@ pytesseract>=0.3.10
 ### Sample Demo Cases
 
 **Quick Demo Steps:**
-1. 📱 **[Open Live Demo](https://multimodal-rag-system.streamlit.app)**
+1. 📱 **[Open Live Demo](https://singapore-clinical-ai.streamlit.app)**
 2. 📄 **Click "Load Emergency Sample"** - Pre-loaded STEMI case
 3. 🔍 **Click "Analyze with RAG + Multimodal AI"** - See entity extraction + guideline retrieval
 4. 📷 **Upload medical image** (chest X-ray, CT scan) - See computer vision analysis
@@ -206,7 +206,7 @@ combined_analysis = multimodal_fusion(text_entities, image_features)
 ## 💼 Business Applications
 
 ### Current State: Educational Demonstration
-- **🔗 [Live Demo Available](https://multimodal-rag-system.streamlit.app)** - Try all features online
+- **🔗 [Live Demo Available](https://singapore-clinical-ai.streamlit.app)** - Try all features online
 - **Healthcare Training:** Medical education and simulation
 - **Technical Interviews:** Demonstrating RAG + multimodal AI capabilities
 - **Portfolio Projects:** Showcasing Singapore healthcare domain knowledge
@@ -281,7 +281,7 @@ singapore_clinical_ai_production.py
 ### Quick Testing
 ```bash
 # Test live demo
-curl -I https://multimodal-rag-system.streamlit.app
+curl -I https://singapore-clinical-ai.streamlit.app
 # Should return: HTTP/2 200
 
 # Test local installation
@@ -299,8 +299,8 @@ python -c "import cv2, pytesseract; print('Optional CV dependencies OK')"
 ```
 
 ### 🔗 Links
-- **Live Demo:** https://multimodal-rag-system.streamlit.app
-- **GitHub Repository:** https://github.com/irinadragunow/multimodal-rag-system
+- **Live Demo:** https://singapore-clinical-ai.streamlit.app
+- **GitHub Repository:** https://github.com/irinadragunow/singapore-clinical-ai
 - **Technical Documentation:** See code comments in `singapore_clinical_ai_production.py`
 
 ### System Requirements
@@ -349,9 +349,9 @@ self.image_types['new_modality'] = {
 
 ## 🔗 Project Links
 
-- **🚀 [Live Demo](https://multimodal-rag-system.streamlit.app)** - Try the system online
-- **📂 [GitHub Repository](https://github.com/irinadragunow/multimodal-rag-system)** - Full source code
+- **🚀 [Live Demo](https://singapore-clinical-ai.streamlit.app)** - Try the system online
+- **📂 [GitHub Repository](https://github.com/irinadragunow/singapore-clinical-ai)** - Full source code
 - **👩‍💻 [Developer Portfolio](https://github.com/irinadragunow)** - Other projects by Irina Dragunow
-- **🇸🇬 [Singapore Healthcare AI](https://multimodal-rag-system.streamlit.app)** - Educational healthcare simulation
+- **🇸🇬 [Singapore Healthcare AI](https://singapore-clinical-ai.streamlit.app)** - Educational healthcare simulation
 
 **Note:** This project demonstrates sophisticated AI/ML engineering capabilities while maintaining ethical boundaries around healthcare simulation. It showcases technical expertise in RAG systems, multimodal AI, and domain-specific adaptations suitable for healthcare technology roles in Singapore and beyond.
