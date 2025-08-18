@@ -92,7 +92,7 @@ cd singapore-clinical-ai
 pip install -r requirements.txt
 
 # Run application
-streamlit run app.py
+streamlit run singapore_clinical_ai_production.py
 ```
 
 **Local URL:** http://localhost:8501
@@ -258,10 +258,10 @@ combined_analysis = multimodal_integration(text_entities, image_features)
 ### Project Structure
 ```
 singapore-clinical-ai/
-├── app.py                    # Main application (1,200+ lines)
-├── requirements.txt          # Dependencies specification
-├── README.md                # Project documentation
-└── .streamlit/              # Streamlit configuration
+├── singapore_clinical_ai_production.py  # Main application (1,200+ lines)
+├── requirements.txt                     # Core dependencies only
+├── README.md                           # Project documentation
+└── .streamlit/                         # Streamlit configuration
 ```
 
 ### Architecture Components
